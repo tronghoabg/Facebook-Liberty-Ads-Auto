@@ -2,6 +2,7 @@ from selenium import webdriver
 import time
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
 serv_obj= Service('chromedriver.exe')
 driver = webdriver.Chrome(service=serv_obj)
 driver.set_window_size(700,800)
@@ -20,5 +21,8 @@ while(match==False):
         lenOfPage = driver.execute_script("window.scrollTo(0, document.body.scrollHeight);var lenOfPage=document.body.scrollHeight;return lenOfPage;")
         if lastCount==lenOfPage:
             match=True
-
+elements = driver.find_elements(By.CSS_SELECTOR, 'div.xh8yej3')
+print(len(elements))
+for el in elements:
+    print(el.text)
 
